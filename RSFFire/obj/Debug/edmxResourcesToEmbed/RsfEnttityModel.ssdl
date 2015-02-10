@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RSFFireModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="RSFFireModelStoreContainer">
+    <EntitySet Name="Documents" EntityType="RSFFireModel.Store.Documents" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Fees" EntityType="RSFFireModel.Store.Fees" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="JournalEntries" EntityType="RSFFireModel.Store.JournalEntries" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ordinances" EntityType="RSFFireModel.Store.Ordinances" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Parcels" EntityType="RSFFireModel.Store.Parcels" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="People" EntityType="RSFFireModel.Store.People" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Projects" EntityType="RSFFireModel.Store.Projects" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Streets" EntityType="RSFFireModel.Store.Streets" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ParcelStreet" Association="RSFFireModel.Store.ParcelStreet">
+      <End Role="Parcel" EntitySet="Parcels" />
+      <End Role="Street" EntitySet="Streets" />
+    </AssociationSet>
+    <AssociationSet Name="StreetProject" Association="RSFFireModel.Store.StreetProject">
+      <End Role="Street" EntitySet="Streets" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="PersonProject" Association="RSFFireModel.Store.PersonProject">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectJournalEntry" Association="RSFFireModel.Store.ProjectJournalEntry">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="JournalEntry" EntitySet="JournalEntries" />
+    </AssociationSet>
+    <AssociationSet Name="ParcelDocument" Association="RSFFireModel.Store.ParcelDocument">
+      <End Role="Parcel" EntitySet="Parcels" />
+      <End Role="Document" EntitySet="Documents" />
+    </AssociationSet>
+    <AssociationSet Name="PersonParcel" Association="RSFFireModel.Store.PersonParcel">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Parcel" EntitySet="Parcels" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectFee" Association="RSFFireModel.Store.ProjectFee">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="Fee" EntitySet="Fees" />
+    </AssociationSet>
+    <AssociationSet Name="PersonFee" Association="RSFFireModel.Store.PersonFee">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Fee" EntitySet="Fees" />
+    </AssociationSet>
+    <AssociationSet Name="OrdinanceFee" Association="RSFFireModel.Store.OrdinanceFee">
+      <End Role="Ordinance" EntitySet="Ordinances" />
+      <End Role="Fee" EntitySet="Fees" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectDocument" Association="RSFFireModel.Store.ProjectDocument">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="Document" EntitySet="Documents" />
+    </AssociationSet>
+    <AssociationSet Name="ParcelProject" Association="RSFFireModel.Store.ParcelProject">
+      <End Role="Parcel" EntitySet="Parcels" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Documents">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="ParcelId" Type="int" Nullable="false" />
+    <Property Name="Parcel_id" Type="int" Nullable="false" />
+    <Property Name="Project_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Fees">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OrdinanceId" Type="int" Nullable="false" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="Fee1" Type="decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Qty" Type="int" Nullable="false" />
+    <Property Name="AmtPaid" Type="decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="PaidWith" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Reference" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="ContactId" Type="int" Nullable="false" />
+    <Property Name="OTRequest" Type="bit" Nullable="false" />
+    <Property Name="PlanCheckerId" Type="int" Nullable="false" />
+    <Property Name="PassFail" Type="bit" Nullable="false" />
+    <Property Name="PCKType" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="NotifiedOn" Type="datetime" Nullable="true" />
+    <Property Name="PickedUpOn" Type="datetime" Nullable="true" />
+    <Property Name="PickedUpBy" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Notes" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Project_id" Type="int" Nullable="false" />
+    <Property Name="Person_id" Type="int" Nullable="false" />
+    <Property Name="Ordinance_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JournalEntries">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="Project_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ordinances">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Number" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Parcels">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="APN" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="OwnerId" Type="int" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="City" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="State" Type="nvarchar" Nullable="false" MaxLength="2" />
+    <Property Name="Zip" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="StreetId" Type="int" Nullable="false" />
+    <Property Name="Streets_id" Type="int" Nullable="false" />
+    <Property Name="Person_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="People">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="City" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="State" Type="nvarchar" Nullable="true" MaxLength="2" />
+    <Property Name="Zip" Type="nvarchar" Nullable="true" MaxLength="5" />
+    <Property Name="Phone" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="AltPhone" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Projects">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlanCheckNumber" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="FinalSignOff" Type="datetime" Nullable="true" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="AddressNumber" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="StreetId" Type="int" Nullable="false" />
+    <Property Name="APN" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="ProjectType" Type="nchar" Nullable="true" MaxLength="10" />
+    <Property Name="PlansReceived" Type="bit" Nullable="false" />
+    <Property Name="OnHold" Type="bit" Nullable="false" />
+    <Property Name="HoldDescription" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Notes" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Oct2007Related" Type="bit" Nullable="false" />
+    <Property Name="SeeFileCabinet" Type="bit" Nullable="false" />
+    <Property Name="ContactId" Type="int" Nullable="true" />
+    <Property Name="LandscapeContactId" Type="int" Nullable="true" />
+    <Property Name="PropertyOwnerId" Type="int" Nullable="false" />
+    <Property Name="ConstructionType" Type="int" Nullable="true" />
+    <Property Name="Basement" Type="bit" Nullable="false" />
+    <Property Name="SprinklerContractorId" Type="int" Nullable="true" />
+    <Property Name="OriginalSqFt" Type="int" Nullable="true" />
+    <Property Name="Stories" Type="int" Nullable="true" />
+    <Property Name="SqFtAdded" Type="int" Nullable="true" />
+    <Property Name="FireFlow" Type="nchar" Nullable="true" MaxLength="10" />
+    <Property Name="UFCYear" Type="int" Nullable="true" />
+    <Property Name="ParcelId" Type="int" Nullable="false" />
+    <Property Name="Street_id" Type="int" Nullable="false" />
+    <Property Name="Person_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Streets">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Street1" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="ParcelStreet">
+    <End Role="Parcel" Type="RSFFireModel.Store.Parcels" Multiplicity="*" />
+    <End Role="Street" Type="RSFFireModel.Store.Streets" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Street">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Parcel">
+        <PropertyRef Name="Streets_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StreetProject">
+    <End Role="Street" Type="RSFFireModel.Store.Streets" Multiplicity="1" />
+    <End Role="Project" Type="RSFFireModel.Store.Projects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Street">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="Street_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PersonProject">
+    <End Role="Person" Type="RSFFireModel.Store.People" Multiplicity="1" />
+    <End Role="Project" Type="RSFFireModel.Store.Projects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="Person_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectJournalEntry">
+    <End Role="Project" Type="RSFFireModel.Store.Projects" Multiplicity="1" />
+    <End Role="JournalEntry" Type="RSFFireModel.Store.JournalEntries" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="JournalEntry">
+        <PropertyRef Name="Project_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ParcelDocument">
+    <End Role="Parcel" Type="RSFFireModel.Store.Parcels" Multiplicity="1" />
+    <End Role="Document" Type="RSFFireModel.Store.Documents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parcel">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Document">
+        <PropertyRef Name="Parcel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PersonParcel">
+    <End Role="Person" Type="RSFFireModel.Store.People" Multiplicity="1" />
+    <End Role="Parcel" Type="RSFFireModel.Store.Parcels" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Parcel">
+        <PropertyRef Name="Person_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectFee">
+    <End Role="Project" Type="RSFFireModel.Store.Projects" Multiplicity="1" />
+    <End Role="Fee" Type="RSFFireModel.Store.Fees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Fee">
+        <PropertyRef Name="Project_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PersonFee">
+    <End Role="Person" Type="RSFFireModel.Store.People" Multiplicity="1" />
+    <End Role="Fee" Type="RSFFireModel.Store.Fees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Fee">
+        <PropertyRef Name="Person_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrdinanceFee">
+    <End Role="Ordinance" Type="RSFFireModel.Store.Ordinances" Multiplicity="1" />
+    <End Role="Fee" Type="RSFFireModel.Store.Fees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ordinance">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Fee">
+        <PropertyRef Name="Ordinance_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectDocument">
+    <End Role="Project" Type="RSFFireModel.Store.Projects" Multiplicity="1" />
+    <End Role="Document" Type="RSFFireModel.Store.Documents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Document">
+        <PropertyRef Name="Project_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ParcelProject">
+    <End Role="Parcel" Type="RSFFireModel.Store.Parcels" Multiplicity="1" />
+    <End Role="Project" Type="RSFFireModel.Store.Projects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parcel">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="ParcelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

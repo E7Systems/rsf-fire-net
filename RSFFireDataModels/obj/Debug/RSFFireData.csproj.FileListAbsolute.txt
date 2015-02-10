@@ -1,0 +1,9 @@
+C:\Users\Chuck\Source\RSFFire\RSFFireDataModels\bin\Debug\RSFFireData.dll.config
+C:\Users\Chuck\Source\RSFFire\RSFFireDataModels\bin\Debug\RSFFireData.dll
+C:\Users\Chuck\Source\RSFFire\RSFFireDataModels\bin\Debug\RSFFireData.pdb
+C:\Users\Chuck\Source\RSFFire\RSFFireDataModels\bin\Debug\EntityFramework.dll
+C:\Users\Chuck\Source\RSFFire\RSFFireDataModels\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Chuck\Source\RSFFire\RSFFireDataModels\bin\Debug\EntityFramework.xml
+C:\Users\Chuck\Source\RSFFire\RSFFireDataModels\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Chuck\Source\RSFFire\RSFFireDataModels\obj\Debug\RSFFireData.dll
+C:\Users\Chuck\Source\RSFFire\RSFFireDataModels\obj\Debug\RSFFireData.pdb

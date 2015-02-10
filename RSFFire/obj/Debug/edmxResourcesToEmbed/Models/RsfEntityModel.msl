@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RSFFireModelStoreContainer" CdmEntityContainer="RSFFireEntities">
+    <EntitySetMapping Name="Documents">
+      <EntityTypeMapping TypeName="IsTypeOf(RSFFireModel.Document)">
+        <MappingFragment StoreEntitySet="Documents">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="ParcelId" ColumnName="ParcelId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fees">
+      <EntityTypeMapping TypeName="IsTypeOf(RSFFireModel.Fee)">
+        <MappingFragment StoreEntitySet="Fees">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="OrdinanceId" ColumnName="OrdinanceId" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="Fee1" ColumnName="Fee1" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="AmtPaid" ColumnName="AmtPaid" />
+          <ScalarProperty Name="PaidWith" ColumnName="PaidWith" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+          <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+          <ScalarProperty Name="OTRequest" ColumnName="OTRequest" />
+          <ScalarProperty Name="PlanCheckerId" ColumnName="PlanCheckerId" />
+          <ScalarProperty Name="PassFail" ColumnName="PassFail" />
+          <ScalarProperty Name="PCKType" ColumnName="PCKType" />
+          <ScalarProperty Name="NotifiedOn" ColumnName="NotifiedOn" />
+          <ScalarProperty Name="PickedUpOn" ColumnName="PickedUpOn" />
+          <ScalarProperty Name="PickedUpBy" ColumnName="PickedUpBy" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JournalEntries">
+      <EntityTypeMapping TypeName="IsTypeOf(RSFFireModel.JournalEntry)">
+        <MappingFragment StoreEntitySet="JournalEntries">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ordinances">
+      <EntityTypeMapping TypeName="IsTypeOf(RSFFireModel.Ordinance)">
+        <MappingFragment StoreEntitySet="Ordinances">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parcels">
+      <EntityTypeMapping TypeName="IsTypeOf(RSFFireModel.Parcel)">
+        <MappingFragment StoreEntitySet="Parcels">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="APN" ColumnName="APN" />
+          <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="StreetId" ColumnName="StreetId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="People">
+      <EntityTypeMapping TypeName="IsTypeOf(RSFFireModel.Person)">
+        <MappingFragment StoreEntitySet="People">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="AltPhone" ColumnName="AltPhone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="IsTypeOf(RSFFireModel.Project)">
+        <MappingFragment StoreEntitySet="Projects">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="PlanCheckNumber" ColumnName="PlanCheckNumber" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="FinalSignOff" ColumnName="FinalSignOff" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="AddressNumber" ColumnName="AddressNumber" />
+          <ScalarProperty Name="StreetId" ColumnName="StreetId" />
+          <ScalarProperty Name="APN" ColumnName="APN" />
+          <ScalarProperty Name="ProjectType" ColumnName="ProjectType" />
+          <ScalarProperty Name="PlansReceived" ColumnName="PlansReceived" />
+          <ScalarProperty Name="OnHold" ColumnName="OnHold" />
+          <ScalarProperty Name="HoldDescription" ColumnName="HoldDescription" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Oct2007Related" ColumnName="Oct2007Related" />
+          <ScalarProperty Name="SeeFileCabinet" ColumnName="SeeFileCabinet" />
+          <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+          <ScalarProperty Name="LandscapeContactId" ColumnName="LandscapeContactId" />
+          <ScalarProperty Name="PropertyOwnerId" ColumnName="PropertyOwnerId" />
+          <ScalarProperty Name="ConstructionType" ColumnName="ConstructionType" />
+          <ScalarProperty Name="Basement" ColumnName="Basement" />
+          <ScalarProperty Name="SprinklerContractorId" ColumnName="SprinklerContractorId" />
+          <ScalarProperty Name="OriginalSqFt" ColumnName="OriginalSqFt" />
+          <ScalarProperty Name="Stories" ColumnName="Stories" />
+          <ScalarProperty Name="SqFtAdded" ColumnName="SqFtAdded" />
+          <ScalarProperty Name="FireFlow" ColumnName="FireFlow" />
+          <ScalarProperty Name="UFCYear" ColumnName="UFCYear" />
+          <ScalarProperty Name="ParcelId" ColumnName="ParcelId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Streets">
+      <EntityTypeMapping TypeName="IsTypeOf(RSFFireModel.Street)">
+        <MappingFragment StoreEntitySet="Streets">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Street1" ColumnName="Street1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ParcelStreet" TypeName="RSFFireModel.ParcelStreet" StoreEntitySet="Parcels">
+      <EndProperty Name="Street">
+        <ScalarProperty Name="id" ColumnName="Streets_id" />
+      </EndProperty>
+      <EndProperty Name="Parcel">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="StreetProject" TypeName="RSFFireModel.StreetProject" StoreEntitySet="Projects">
+      <EndProperty Name="Street">
+        <ScalarProperty Name="id" ColumnName="Street_id" />
+      </EndProperty>
+      <EndProperty Name="Project">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PersonProject" TypeName="RSFFireModel.PersonProject" StoreEntitySet="Projects">
+      <EndProperty Name="Person">
+        <ScalarProperty Name="id" ColumnName="Person_id" />
+      </EndProperty>
+      <EndProperty Name="Project">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProjectJournalEntry" TypeName="RSFFireModel.ProjectJournalEntry" StoreEntitySet="JournalEntries">
+      <EndProperty Name="Project">
+        <ScalarProperty Name="id" ColumnName="Project_id" />
+      </EndProperty>
+      <EndProperty Name="JournalEntry">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ParcelDocument" TypeName="RSFFireModel.ParcelDocument" StoreEntitySet="Documents">
+      <EndProperty Name="Parcel">
+        <ScalarProperty Name="id" ColumnName="Parcel_id" />
+      </EndProperty>
+      <EndProperty Name="Document">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PersonParcel" TypeName="RSFFireModel.PersonParcel" StoreEntitySet="Parcels">
+      <EndProperty Name="Person">
+        <ScalarProperty Name="id" ColumnName="Person_id" />
+      </EndProperty>
+      <EndProperty Name="Parcel">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProjectFee" TypeName="RSFFireModel.ProjectFee" StoreEntitySet="Fees">
+      <EndProperty Name="Project">
+        <ScalarProperty Name="id" ColumnName="Project_id" />
+      </EndProperty>
+      <EndProperty Name="Fee">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PersonFee" TypeName="RSFFireModel.PersonFee" StoreEntitySet="Fees">
+      <EndProperty Name="Person">
+        <ScalarProperty Name="id" ColumnName="Person_id" />
+      </EndProperty>
+      <EndProperty Name="Fee">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OrdinanceFee" TypeName="RSFFireModel.OrdinanceFee" StoreEntitySet="Fees">
+      <EndProperty Name="Ordinance">
+        <ScalarProperty Name="id" ColumnName="Ordinance_id" />
+      </EndProperty>
+      <EndProperty Name="Fee">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProjectDocument" TypeName="RSFFireModel.ProjectDocument" StoreEntitySet="Documents">
+      <EndProperty Name="Project">
+        <ScalarProperty Name="id" ColumnName="Project_id" />
+      </EndProperty>
+      <EndProperty Name="Document">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

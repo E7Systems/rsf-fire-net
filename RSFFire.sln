@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSFFire", "RSFFire\RSFFire.csproj", "{7040DB55-67F0-45FE-9FA0-4FDFE32FF2D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSFFireData", "RSFFireDataModels\RSFFireData.csproj", "{5607AD67-6E46-425B-9937-251076346348}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSFFireBiz", "RSFFireBiz\RSFFireBiz.csproj", "{4AD2A992-2C33-4FE4-A60F-232C81B6308C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7040DB55-67F0-45FE-9FA0-4FDFE32FF2D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7040DB55-67F0-45FE-9FA0-4FDFE32FF2D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7040DB55-67F0-45FE-9FA0-4FDFE32FF2D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7040DB55-67F0-45FE-9FA0-4FDFE32FF2D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5607AD67-6E46-425B-9937-251076346348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5607AD67-6E46-425B-9937-251076346348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5607AD67-6E46-425B-9937-251076346348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5607AD67-6E46-425B-9937-251076346348}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AD2A992-2C33-4FE4-A60F-232C81B6308C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AD2A992-2C33-4FE4-A60F-232C81B6308C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AD2A992-2C33-4FE4-A60F-232C81B6308C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AD2A992-2C33-4FE4-A60F-232C81B6308C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
