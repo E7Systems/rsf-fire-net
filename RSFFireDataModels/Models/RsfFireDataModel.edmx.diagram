@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a750277655154b4c8a5a39904e53b6e3" Name="Diagram1">
+        <EntityTypeShape EntityType="RSFFireModel.AspNetRole" Width="1.5" PointX="8.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RSFFireModel.AspNetUserClaim" Width="1.5" PointX="13.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RSFFireModel.AspNetUserLogin" Width="1.5" PointX="13.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RSFFireModel.AspNetUser" Width="1.5" PointX="11" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RSFFireModel.Document" Width="1.5" PointX="14.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RSFFireModel.Fee" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RSFFireModel.JournalEntry" Width="1.5" PointX="11.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="RSFFireModel.Ordinance" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RSFFireModel.Parcel" Width="1.5" PointX="6" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RSFFireModel.Person" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RSFFireModel.Project" Width="1.5" PointX="9" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RSFFireModel.Street" Width="1.5" PointX="6.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="RSFFireModel.ProjectList" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="RSFFireModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="RSFFireModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="RSFFireModel.FK_ParcelDocument" ManuallyRouted="false" />
+        <AssociationConnector Association="RSFFireModel.FK_ProjectDocument" ManuallyRouted="false" />
+        <AssociationConnector Association="RSFFireModel.FK_OrdinanceFee" ManuallyRouted="false" />
+        <AssociationConnector Association="RSFFireModel.FK_PersonFee" ManuallyRouted="false" />
+        <AssociationConnector Association="RSFFireModel.FK_ProjectFee" ManuallyRouted="false" />
+        <AssociationConnector Association="RSFFireModel.FK_ProjectJournalEntry" ManuallyRouted="false" />
+        <AssociationConnector Association="RSFFireModel.FK_ParcelStreet" ManuallyRouted="false" />
+        <AssociationConnector Association="RSFFireModel.FK_PersonParcel" ManuallyRouted="false" />
+        <AssociationConnector Association="RSFFireModel.FK_PersonProject" ManuallyRouted="false" />
+        <AssociationConnector Association="RSFFireModel.FK_StreetProject" ManuallyRouted="false" />
+        <AssociationConnector Association="RSFFireModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

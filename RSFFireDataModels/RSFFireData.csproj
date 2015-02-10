@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5607AD67-6E46-425B-9937-251076346348}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RSFFireData</RootNamespace>
+    <AssemblyName>RSFFireData</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Document.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fee.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JournalEntry.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ordinance.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Parcel.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Person.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProjectList.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RsfFireDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RsfFireDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RsfFireDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RsfFireDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RsfFireDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Street.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_DocumentsInsert_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_DocumentsSelect_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_DocumentsUpdate_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_FeesInsert_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_FeesSelect_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_FeesUpdate_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_JournalEntriesInsert_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_JournalEntriesSelect_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_JournalEntriesUpdate_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_OrdinancesInsert_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_OrdinancesSelect_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_OrdinancesUpdate_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_ParcelsInsert_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_ParcelsSelect_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_ParcelsUpdate_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_PeopleInsert_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_PeopleSelect_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_PeopleUpdate_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_ProjectListSelect_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_ProjectsInsert_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_ProjectsSelect_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_ProjectsUpdate_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_StreetsInsert_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_StreetsSelect_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_StreetsUpdate_Result.cs">
+      <DependentUpon>RsfFireDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="Models\RsfFireDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RsfFireDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\RsfFireDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RsfFireDataModel.edmx</DependentUpon>
+      <LastGenOutput>RsfFireDataModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Models\RsfFireDataModel.edmx.diagram">
+      <DependentUpon>RsfFireDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="Models\RsfFireDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RsfFireDataModel.edmx</DependentUpon>
+      <LastGenOutput>RsfFireDataModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\RsfFireEDM.edmx.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

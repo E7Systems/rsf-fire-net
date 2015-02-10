@@ -1,0 +1,994 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RSFFireModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="Document">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="ParcelId" Type="Int32" Nullable="false" />
+    <Property Name="Parcel_id" Type="Int32" Nullable="false" />
+    <Property Name="Project_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Parcel" Relationship="Self.FK_ParcelDocument" FromRole="Documents" ToRole="Parcels" />
+    <NavigationProperty Name="Project" Relationship="Self.FK_ProjectDocument" FromRole="Documents" ToRole="Projects" />
+  </EntityType>
+  <EntityType Name="Fee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OrdinanceId" Type="Int32" Nullable="false" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="Fee1" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Qty" Type="Int32" Nullable="false" />
+    <Property Name="AmtPaid" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="PaidWith" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Reference" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactId" Type="Int32" Nullable="false" />
+    <Property Name="OTRequest" Type="Boolean" Nullable="false" />
+    <Property Name="PlanCheckerId" Type="Int32" Nullable="false" />
+    <Property Name="PassFail" Type="Boolean" Nullable="false" />
+    <Property Name="PCKType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NotifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="PickedUpOn" Type="DateTime" Precision="3" />
+    <Property Name="PickedUpBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Project_id" Type="Int32" Nullable="false" />
+    <Property Name="Person_id" Type="Int32" Nullable="false" />
+    <Property Name="Ordinance_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ordinance" Relationship="Self.FK_OrdinanceFee" FromRole="Fees" ToRole="Ordinances" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_PersonFee" FromRole="Fees" ToRole="People" />
+    <NavigationProperty Name="Project" Relationship="Self.FK_ProjectFee" FromRole="Fees" ToRole="Projects" />
+  </EntityType>
+  <EntityType Name="JournalEntry">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProjectId" Type="Int32" Nullable="false" />
+    <Property Name="Project_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Project" Relationship="Self.FK_ProjectJournalEntry" FromRole="JournalEntries" ToRole="Projects" />
+  </EntityType>
+  <EntityType Name="Ordinance">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Fees" Relationship="Self.FK_OrdinanceFee" FromRole="Ordinances" ToRole="Fees" />
+  </EntityType>
+  <EntityType Name="Parcel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="APN" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="OwnerId" Type="Int32" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Zip" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StreetId" Type="Int32" Nullable="false" />
+    <Property Name="Streets_id" Type="Int32" Nullable="false" />
+    <Property Name="Person_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Documents" Relationship="Self.FK_ParcelDocument" FromRole="Parcels" ToRole="Documents" />
+    <NavigationProperty Name="Street" Relationship="Self.FK_ParcelStreet" FromRole="Parcels" ToRole="Streets" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_PersonParcel" FromRole="Parcels" ToRole="People" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Zip" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AltPhone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Fees" Relationship="Self.FK_PersonFee" FromRole="People" ToRole="Fees" />
+    <NavigationProperty Name="Parcels" Relationship="Self.FK_PersonParcel" FromRole="People" ToRole="Parcels" />
+    <NavigationProperty Name="Projects" Relationship="Self.FK_PersonProject" FromRole="People" ToRole="Projects" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PlanCheckNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FinalSignOff" Type="DateTime" Precision="3" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="AddressNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="StreetId" Type="Int32" Nullable="false" />
+    <Property Name="APN" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ProjectType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="PlansReceived" Type="Boolean" Nullable="false" />
+    <Property Name="OnHold" Type="Boolean" Nullable="false" />
+    <Property Name="HoldDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Oct2007Related" Type="Boolean" Nullable="false" />
+    <Property Name="SeeFileCabinet" Type="Boolean" Nullable="false" />
+    <Property Name="ContactId" Type="Int32" />
+    <Property Name="LandscapeContactId" Type="Int32" />
+    <Property Name="PropertyOwnerId" Type="Int32" Nullable="false" />
+    <Property Name="ConstructionType" Type="Int32" />
+    <Property Name="Basement" Type="Boolean" Nullable="false" />
+    <Property Name="SprinklerContractorId" Type="Int32" />
+    <Property Name="OriginalSqFt" Type="Int32" />
+    <Property Name="Stories" Type="Int32" />
+    <Property Name="SqFtAdded" Type="Int32" />
+    <Property Name="FireFlow" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="UFCYear" Type="Int32" />
+    <Property Name="ParcelId" Type="Int32" Nullable="false" />
+    <Property Name="Street_id" Type="Int32" Nullable="false" />
+    <Property Name="Person_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Documents" Relationship="Self.FK_ProjectDocument" FromRole="Projects" ToRole="Documents" />
+    <NavigationProperty Name="Fees" Relationship="Self.FK_ProjectFee" FromRole="Projects" ToRole="Fees" />
+    <NavigationProperty Name="JournalEntries" Relationship="Self.FK_ProjectJournalEntry" FromRole="Projects" ToRole="JournalEntries" />
+    <NavigationProperty Name="Person" Relationship="Self.FK_PersonProject" FromRole="Projects" ToRole="People" />
+    <NavigationProperty Name="Street" Relationship="Self.FK_StreetProject" FromRole="Projects" ToRole="Streets" />
+  </EntityType>
+  <EntityType Name="Street">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Street1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Parcels" Relationship="Self.FK_ParcelStreet" FromRole="Streets" ToRole="Parcels" />
+    <NavigationProperty Name="Projects" Relationship="Self.FK_StreetProject" FromRole="Streets" ToRole="Projects" />
+  </EntityType>
+  <EntityType Name="ProjectList">
+    <Key>
+      <PropertyRef Name="AddressNumber" />
+      <PropertyRef Name="Street1" />
+      <PropertyRef Name="APN" />
+      <PropertyRef Name="Date" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="PlanCheckNumber" />
+    </Key>
+    <Property Name="AddressNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Street1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="APN" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PlanCheckNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParcelDocument">
+    <End Role="Parcels" Type="Self.Parcel" Multiplicity="1" />
+    <End Role="Documents" Type="Self.Document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parcels">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Documents">
+        <PropertyRef Name="Parcel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectDocument">
+    <End Role="Projects" Type="Self.Project" Multiplicity="1" />
+    <End Role="Documents" Type="Self.Document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Documents">
+        <PropertyRef Name="Project_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdinanceFee">
+    <End Role="Ordinances" Type="Self.Ordinance" Multiplicity="1" />
+    <End Role="Fees" Type="Self.Fee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ordinances">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Fees">
+        <PropertyRef Name="Ordinance_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonFee">
+    <End Role="People" Type="Self.Person" Multiplicity="1" />
+    <End Role="Fees" Type="Self.Fee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="People">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Fees">
+        <PropertyRef Name="Person_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectFee">
+    <End Role="Projects" Type="Self.Project" Multiplicity="1" />
+    <End Role="Fees" Type="Self.Fee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Fees">
+        <PropertyRef Name="Project_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectJournalEntry">
+    <End Role="Projects" Type="Self.Project" Multiplicity="1" />
+    <End Role="JournalEntries" Type="Self.JournalEntry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="JournalEntries">
+        <PropertyRef Name="Project_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParcelStreet">
+    <End Role="Streets" Type="Self.Street" Multiplicity="1" />
+    <End Role="Parcels" Type="Self.Parcel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Streets">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Parcels">
+        <PropertyRef Name="Streets_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonParcel">
+    <End Role="People" Type="Self.Person" Multiplicity="1" />
+    <End Role="Parcels" Type="Self.Parcel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="People">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Parcels">
+        <PropertyRef Name="Person_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonProject">
+    <End Role="People" Type="Self.Person" Multiplicity="1" />
+    <End Role="Projects" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="People">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Projects">
+        <PropertyRef Name="Person_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StreetProject">
+    <End Role="Streets" Type="Self.Street" Multiplicity="1" />
+    <End Role="Projects" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Streets">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Projects">
+        <PropertyRef Name="Street_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="RSFFireEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+    <EntitySet Name="Documents" EntityType="Self.Document" />
+    <EntitySet Name="Fees" EntityType="Self.Fee" />
+    <EntitySet Name="JournalEntries" EntityType="Self.JournalEntry" />
+    <EntitySet Name="Ordinances" EntityType="Self.Ordinance" />
+    <EntitySet Name="Parcels" EntityType="Self.Parcel" />
+    <EntitySet Name="People" EntityType="Self.Person" />
+    <EntitySet Name="Projects" EntityType="Self.Project" />
+    <EntitySet Name="Streets" EntityType="Self.Street" />
+    <EntitySet Name="ProjectLists" EntityType="Self.ProjectList" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParcelDocument" Association="Self.FK_ParcelDocument">
+      <End Role="Parcels" EntitySet="Parcels" />
+      <End Role="Documents" EntitySet="Documents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectDocument" Association="Self.FK_ProjectDocument">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="Documents" EntitySet="Documents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdinanceFee" Association="Self.FK_OrdinanceFee">
+      <End Role="Ordinances" EntitySet="Ordinances" />
+      <End Role="Fees" EntitySet="Fees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonFee" Association="Self.FK_PersonFee">
+      <End Role="People" EntitySet="People" />
+      <End Role="Fees" EntitySet="Fees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectFee" Association="Self.FK_ProjectFee">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="Fees" EntitySet="Fees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectJournalEntry" Association="Self.FK_ProjectJournalEntry">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="JournalEntries" EntitySet="JournalEntries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParcelStreet" Association="Self.FK_ParcelStreet">
+      <End Role="Streets" EntitySet="Streets" />
+      <End Role="Parcels" EntitySet="Parcels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonParcel" Association="Self.FK_PersonParcel">
+      <End Role="People" EntitySet="People" />
+      <End Role="Parcels" EntitySet="Parcels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonProject" Association="Self.FK_PersonProject">
+      <End Role="People" EntitySet="People" />
+      <End Role="Projects" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StreetProject" Association="Self.FK_StreetProject">
+      <End Role="Streets" EntitySet="Streets" />
+      <End Role="Projects" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <FunctionImport Name="usp_DocumentsDelete">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_DocumentsInsert" ReturnType="Collection(RSFFireModel.usp_DocumentsInsert_Result)">
+      <Parameter Name="Type" Mode="In" Type="String" />
+      <Parameter Name="Location" Mode="In" Type="String" />
+      <Parameter Name="ProjectId" Mode="In" Type="Int32" />
+      <Parameter Name="ParcelId" Mode="In" Type="Int32" />
+      <Parameter Name="Parcel_id" Mode="In" Type="Int32" />
+      <Parameter Name="Project_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_DocumentsSelect" ReturnType="Collection(RSFFireModel.usp_DocumentsSelect_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_DocumentsUpdate" ReturnType="Collection(RSFFireModel.usp_DocumentsUpdate_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="Type" Mode="In" Type="String" />
+      <Parameter Name="Location" Mode="In" Type="String" />
+      <Parameter Name="ProjectId" Mode="In" Type="Int32" />
+      <Parameter Name="ParcelId" Mode="In" Type="Int32" />
+      <Parameter Name="Parcel_id" Mode="In" Type="Int32" />
+      <Parameter Name="Project_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_FeesDelete">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_FeesInsert" ReturnType="Collection(RSFFireModel.usp_FeesInsert_Result)">
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="OrdinanceId" Mode="In" Type="Int32" />
+      <Parameter Name="ProjectId" Mode="In" Type="Int32" />
+      <Parameter Name="Fee1" Mode="In" Type="Decimal" />
+      <Parameter Name="Qty" Mode="In" Type="Int32" />
+      <Parameter Name="AmtPaid" Mode="In" Type="Decimal" />
+      <Parameter Name="PaidWith" Mode="In" Type="String" />
+      <Parameter Name="Reference" Mode="In" Type="String" />
+      <Parameter Name="ContactId" Mode="In" Type="Int32" />
+      <Parameter Name="OTRequest" Mode="In" Type="Boolean" />
+      <Parameter Name="PlanCheckerId" Mode="In" Type="Int32" />
+      <Parameter Name="PassFail" Mode="In" Type="Boolean" />
+      <Parameter Name="PCKType" Mode="In" Type="String" />
+      <Parameter Name="NotifiedOn" Mode="In" Type="DateTime" />
+      <Parameter Name="PickedUpOn" Mode="In" Type="DateTime" />
+      <Parameter Name="PickedUpBy" Mode="In" Type="String" />
+      <Parameter Name="Notes" Mode="In" Type="String" />
+      <Parameter Name="Project_id" Mode="In" Type="Int32" />
+      <Parameter Name="Person_id" Mode="In" Type="Int32" />
+      <Parameter Name="Ordinance_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_FeesSelect" ReturnType="Collection(RSFFireModel.usp_FeesSelect_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_FeesUpdate" ReturnType="Collection(RSFFireModel.usp_FeesUpdate_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="OrdinanceId" Mode="In" Type="Int32" />
+      <Parameter Name="ProjectId" Mode="In" Type="Int32" />
+      <Parameter Name="Fee1" Mode="In" Type="Decimal" />
+      <Parameter Name="Qty" Mode="In" Type="Int32" />
+      <Parameter Name="AmtPaid" Mode="In" Type="Decimal" />
+      <Parameter Name="PaidWith" Mode="In" Type="String" />
+      <Parameter Name="Reference" Mode="In" Type="String" />
+      <Parameter Name="ContactId" Mode="In" Type="Int32" />
+      <Parameter Name="OTRequest" Mode="In" Type="Boolean" />
+      <Parameter Name="PlanCheckerId" Mode="In" Type="Int32" />
+      <Parameter Name="PassFail" Mode="In" Type="Boolean" />
+      <Parameter Name="PCKType" Mode="In" Type="String" />
+      <Parameter Name="NotifiedOn" Mode="In" Type="DateTime" />
+      <Parameter Name="PickedUpOn" Mode="In" Type="DateTime" />
+      <Parameter Name="PickedUpBy" Mode="In" Type="String" />
+      <Parameter Name="Notes" Mode="In" Type="String" />
+      <Parameter Name="Project_id" Mode="In" Type="Int32" />
+      <Parameter Name="Person_id" Mode="In" Type="Int32" />
+      <Parameter Name="Ordinance_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_JournalEntriesDelete">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_JournalEntriesInsert" ReturnType="Collection(RSFFireModel.usp_JournalEntriesInsert_Result)">
+      <Parameter Name="Text" Mode="In" Type="String" />
+      <Parameter Name="ProjectId" Mode="In" Type="Int32" />
+      <Parameter Name="Project_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_JournalEntriesSelect" ReturnType="Collection(RSFFireModel.usp_JournalEntriesSelect_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_JournalEntriesUpdate" ReturnType="Collection(RSFFireModel.usp_JournalEntriesUpdate_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="Text" Mode="In" Type="String" />
+      <Parameter Name="ProjectId" Mode="In" Type="Int32" />
+      <Parameter Name="Project_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_OrdinancesDelete">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_OrdinancesInsert" ReturnType="Collection(RSFFireModel.usp_OrdinancesInsert_Result)">
+      <Parameter Name="Number" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_OrdinancesSelect" ReturnType="Collection(RSFFireModel.usp_OrdinancesSelect_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_OrdinancesUpdate" ReturnType="Collection(RSFFireModel.usp_OrdinancesUpdate_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="Number" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_ParcelsDelete">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_ParcelsInsert" ReturnType="Collection(RSFFireModel.usp_ParcelsInsert_Result)">
+      <Parameter Name="APN" Mode="In" Type="String" />
+      <Parameter Name="OwnerId" Mode="In" Type="Int32" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="State" Mode="In" Type="String" />
+      <Parameter Name="Zip" Mode="In" Type="String" />
+      <Parameter Name="StreetId" Mode="In" Type="Int32" />
+      <Parameter Name="Streets_id" Mode="In" Type="Int32" />
+      <Parameter Name="Person_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_ParcelsSelect" ReturnType="Collection(RSFFireModel.usp_ParcelsSelect_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_ParcelsUpdate" ReturnType="Collection(RSFFireModel.usp_ParcelsUpdate_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="APN" Mode="In" Type="String" />
+      <Parameter Name="OwnerId" Mode="In" Type="Int32" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="State" Mode="In" Type="String" />
+      <Parameter Name="Zip" Mode="In" Type="String" />
+      <Parameter Name="StreetId" Mode="In" Type="Int32" />
+      <Parameter Name="Streets_id" Mode="In" Type="Int32" />
+      <Parameter Name="Person_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_PeopleDelete">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_PeopleInsert" ReturnType="Collection(RSFFireModel.usp_PeopleInsert_Result)">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="State" Mode="In" Type="String" />
+      <Parameter Name="Zip" Mode="In" Type="String" />
+      <Parameter Name="Phone" Mode="In" Type="String" />
+      <Parameter Name="AltPhone" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_PeopleSelect" ReturnType="Collection(RSFFireModel.usp_PeopleSelect_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_PeopleUpdate" ReturnType="Collection(RSFFireModel.usp_PeopleUpdate_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="State" Mode="In" Type="String" />
+      <Parameter Name="Zip" Mode="In" Type="String" />
+      <Parameter Name="Phone" Mode="In" Type="String" />
+      <Parameter Name="AltPhone" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_ProjectListSelect" ReturnType="Collection(RSFFireModel.usp_ProjectListSelect_Result)" />
+    <FunctionImport Name="usp_ProjectsDelete">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_ProjectsInsert" ReturnType="Collection(RSFFireModel.usp_ProjectsInsert_Result)">
+      <Parameter Name="PlanCheckNumber" Mode="In" Type="String" />
+      <Parameter Name="Date" Mode="In" Type="DateTime" />
+      <Parameter Name="FinalSignOff" Mode="In" Type="DateTime" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Active" Mode="In" Type="Boolean" />
+      <Parameter Name="AddressNumber" Mode="In" Type="String" />
+      <Parameter Name="StreetId" Mode="In" Type="Int32" />
+      <Parameter Name="APN" Mode="In" Type="String" />
+      <Parameter Name="ProjectType" Mode="In" Type="String" />
+      <Parameter Name="PlansReceived" Mode="In" Type="Boolean" />
+      <Parameter Name="OnHold" Mode="In" Type="Boolean" />
+      <Parameter Name="HoldDescription" Mode="In" Type="String" />
+      <Parameter Name="Notes" Mode="In" Type="String" />
+      <Parameter Name="Oct2007Related" Mode="In" Type="Boolean" />
+      <Parameter Name="SeeFileCabinet" Mode="In" Type="Boolean" />
+      <Parameter Name="ContactId" Mode="In" Type="Int32" />
+      <Parameter Name="LandscapeContactId" Mode="In" Type="Int32" />
+      <Parameter Name="PropertyOwnerId" Mode="In" Type="Int32" />
+      <Parameter Name="ConstructionType" Mode="In" Type="Int32" />
+      <Parameter Name="Basement" Mode="In" Type="Boolean" />
+      <Parameter Name="SprinklerContractorId" Mode="In" Type="Int32" />
+      <Parameter Name="OriginalSqFt" Mode="In" Type="Int32" />
+      <Parameter Name="Stories" Mode="In" Type="Int32" />
+      <Parameter Name="SqFtAdded" Mode="In" Type="Int32" />
+      <Parameter Name="FireFlow" Mode="In" Type="String" />
+      <Parameter Name="UFCYear" Mode="In" Type="Int32" />
+      <Parameter Name="ParcelId" Mode="In" Type="Int32" />
+      <Parameter Name="Street_id" Mode="In" Type="Int32" />
+      <Parameter Name="Person_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_ProjectsSelect" ReturnType="Collection(RSFFireModel.usp_ProjectsSelect_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_ProjectsUpdate" ReturnType="Collection(RSFFireModel.usp_ProjectsUpdate_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="PlanCheckNumber" Mode="In" Type="String" />
+      <Parameter Name="Date" Mode="In" Type="DateTime" />
+      <Parameter Name="FinalSignOff" Mode="In" Type="DateTime" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Active" Mode="In" Type="Boolean" />
+      <Parameter Name="AddressNumber" Mode="In" Type="String" />
+      <Parameter Name="StreetId" Mode="In" Type="Int32" />
+      <Parameter Name="APN" Mode="In" Type="String" />
+      <Parameter Name="ProjectType" Mode="In" Type="String" />
+      <Parameter Name="PlansReceived" Mode="In" Type="Boolean" />
+      <Parameter Name="OnHold" Mode="In" Type="Boolean" />
+      <Parameter Name="HoldDescription" Mode="In" Type="String" />
+      <Parameter Name="Notes" Mode="In" Type="String" />
+      <Parameter Name="Oct2007Related" Mode="In" Type="Boolean" />
+      <Parameter Name="SeeFileCabinet" Mode="In" Type="Boolean" />
+      <Parameter Name="ContactId" Mode="In" Type="Int32" />
+      <Parameter Name="LandscapeContactId" Mode="In" Type="Int32" />
+      <Parameter Name="PropertyOwnerId" Mode="In" Type="Int32" />
+      <Parameter Name="ConstructionType" Mode="In" Type="Int32" />
+      <Parameter Name="Basement" Mode="In" Type="Boolean" />
+      <Parameter Name="SprinklerContractorId" Mode="In" Type="Int32" />
+      <Parameter Name="OriginalSqFt" Mode="In" Type="Int32" />
+      <Parameter Name="Stories" Mode="In" Type="Int32" />
+      <Parameter Name="SqFtAdded" Mode="In" Type="Int32" />
+      <Parameter Name="FireFlow" Mode="In" Type="String" />
+      <Parameter Name="UFCYear" Mode="In" Type="Int32" />
+      <Parameter Name="ParcelId" Mode="In" Type="Int32" />
+      <Parameter Name="Street_id" Mode="In" Type="Int32" />
+      <Parameter Name="Person_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_StreetsDelete">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_StreetsInsert" ReturnType="Collection(RSFFireModel.usp_StreetsInsert_Result)">
+      <Parameter Name="Street1" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_StreetsSelect" ReturnType="Collection(RSFFireModel.usp_StreetsSelect_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_StreetsUpdate" ReturnType="Collection(RSFFireModel.usp_StreetsUpdate_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="Street1" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="usp_DocumentsInsert_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Type" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Location" Nullable="false" />
+    <Property Type="Int32" Name="ProjectId" Nullable="false" />
+    <Property Type="Int32" Name="ParcelId" Nullable="false" />
+    <Property Type="Int32" Name="Parcel_id" Nullable="false" />
+    <Property Type="Int32" Name="Project_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_DocumentsSelect_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Type" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Location" Nullable="false" />
+    <Property Type="Int32" Name="ProjectId" Nullable="false" />
+    <Property Type="Int32" Name="ParcelId" Nullable="false" />
+    <Property Type="Int32" Name="Parcel_id" Nullable="false" />
+    <Property Type="Int32" Name="Project_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_DocumentsUpdate_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Type" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Location" Nullable="false" />
+    <Property Type="Int32" Name="ProjectId" Nullable="false" />
+    <Property Type="Int32" Name="ParcelId" Nullable="false" />
+    <Property Type="Int32" Name="Parcel_id" Nullable="false" />
+    <Property Type="Int32" Name="Project_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_FeesInsert_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="false" />
+    <Property Type="Int32" Name="OrdinanceId" Nullable="false" />
+    <Property Type="Int32" Name="ProjectId" Nullable="false" />
+    <Property Type="Decimal" Name="Fee1" Nullable="false" Precision="19" Scale="4" />
+    <Property Type="Int32" Name="Qty" Nullable="false" />
+    <Property Type="Decimal" Name="AmtPaid" Nullable="false" Precision="19" Scale="4" />
+    <Property Type="String" Name="PaidWith" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Reference" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="ContactId" Nullable="false" />
+    <Property Type="Boolean" Name="OTRequest" Nullable="false" />
+    <Property Type="Int32" Name="PlanCheckerId" Nullable="false" />
+    <Property Type="Boolean" Name="PassFail" Nullable="false" />
+    <Property Type="String" Name="PCKType" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="NotifiedOn" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="PickedUpOn" Nullable="true" Precision="23" />
+    <Property Type="String" Name="PickedUpBy" Nullable="true" />
+    <Property Type="String" Name="Notes" Nullable="true" />
+    <Property Type="Int32" Name="Project_id" Nullable="false" />
+    <Property Type="Int32" Name="Person_id" Nullable="false" />
+    <Property Type="Int32" Name="Ordinance_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_FeesSelect_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="false" />
+    <Property Type="Int32" Name="OrdinanceId" Nullable="false" />
+    <Property Type="Int32" Name="ProjectId" Nullable="false" />
+    <Property Type="Decimal" Name="Fee1" Nullable="false" Precision="19" Scale="4" />
+    <Property Type="Int32" Name="Qty" Nullable="false" />
+    <Property Type="Decimal" Name="AmtPaid" Nullable="false" Precision="19" Scale="4" />
+    <Property Type="String" Name="PaidWith" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Reference" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="ContactId" Nullable="false" />
+    <Property Type="Boolean" Name="OTRequest" Nullable="false" />
+    <Property Type="Int32" Name="PlanCheckerId" Nullable="false" />
+    <Property Type="Boolean" Name="PassFail" Nullable="false" />
+    <Property Type="String" Name="PCKType" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="NotifiedOn" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="PickedUpOn" Nullable="true" Precision="23" />
+    <Property Type="String" Name="PickedUpBy" Nullable="true" />
+    <Property Type="String" Name="Notes" Nullable="true" />
+    <Property Type="Int32" Name="Project_id" Nullable="false" />
+    <Property Type="Int32" Name="Person_id" Nullable="false" />
+    <Property Type="Int32" Name="Ordinance_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_FeesUpdate_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="false" />
+    <Property Type="Int32" Name="OrdinanceId" Nullable="false" />
+    <Property Type="Int32" Name="ProjectId" Nullable="false" />
+    <Property Type="Decimal" Name="Fee1" Nullable="false" Precision="19" Scale="4" />
+    <Property Type="Int32" Name="Qty" Nullable="false" />
+    <Property Type="Decimal" Name="AmtPaid" Nullable="false" Precision="19" Scale="4" />
+    <Property Type="String" Name="PaidWith" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Reference" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="ContactId" Nullable="false" />
+    <Property Type="Boolean" Name="OTRequest" Nullable="false" />
+    <Property Type="Int32" Name="PlanCheckerId" Nullable="false" />
+    <Property Type="Boolean" Name="PassFail" Nullable="false" />
+    <Property Type="String" Name="PCKType" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="NotifiedOn" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="PickedUpOn" Nullable="true" Precision="23" />
+    <Property Type="String" Name="PickedUpBy" Nullable="true" />
+    <Property Type="String" Name="Notes" Nullable="true" />
+    <Property Type="Int32" Name="Project_id" Nullable="false" />
+    <Property Type="Int32" Name="Person_id" Nullable="false" />
+    <Property Type="Int32" Name="Ordinance_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_JournalEntriesInsert_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Text" Nullable="false" />
+    <Property Type="Int32" Name="ProjectId" Nullable="false" />
+    <Property Type="Int32" Name="Project_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_JournalEntriesSelect_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Text" Nullable="false" />
+    <Property Type="Int32" Name="ProjectId" Nullable="false" />
+    <Property Type="Int32" Name="Project_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_JournalEntriesUpdate_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Text" Nullable="false" />
+    <Property Type="Int32" Name="ProjectId" Nullable="false" />
+    <Property Type="Int32" Name="Project_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_OrdinancesInsert_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Number" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Description" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_OrdinancesSelect_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Number" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Description" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_OrdinancesUpdate_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Number" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Description" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_ParcelsInsert_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="APN" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="OwnerId" Nullable="false" />
+    <Property Type="String" Name="Address" Nullable="false" />
+    <Property Type="String" Name="City" Nullable="false" />
+    <Property Type="String" Name="State" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="Zip" Nullable="false" MaxLength="5" />
+    <Property Type="Int32" Name="StreetId" Nullable="false" />
+    <Property Type="Int32" Name="Streets_id" Nullable="false" />
+    <Property Type="Int32" Name="Person_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_ParcelsSelect_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="APN" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="OwnerId" Nullable="false" />
+    <Property Type="String" Name="Address" Nullable="false" />
+    <Property Type="String" Name="City" Nullable="false" />
+    <Property Type="String" Name="State" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="Zip" Nullable="false" MaxLength="5" />
+    <Property Type="Int32" Name="StreetId" Nullable="false" />
+    <Property Type="Int32" Name="Streets_id" Nullable="false" />
+    <Property Type="Int32" Name="Person_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_ParcelsUpdate_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="APN" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="OwnerId" Nullable="false" />
+    <Property Type="String" Name="Address" Nullable="false" />
+    <Property Type="String" Name="City" Nullable="false" />
+    <Property Type="String" Name="State" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="Zip" Nullable="false" MaxLength="5" />
+    <Property Type="Int32" Name="StreetId" Nullable="false" />
+    <Property Type="Int32" Name="Streets_id" Nullable="false" />
+    <Property Type="Int32" Name="Person_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_PeopleInsert_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="String" Name="Address" Nullable="true" />
+    <Property Type="String" Name="City" Nullable="true" />
+    <Property Type="String" Name="State" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Zip" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="Phone" Nullable="true" />
+    <Property Type="String" Name="AltPhone" Nullable="true" />
+    <Property Type="String" Name="Email" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="usp_PeopleSelect_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="String" Name="Address" Nullable="true" />
+    <Property Type="String" Name="City" Nullable="true" />
+    <Property Type="String" Name="State" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Zip" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="Phone" Nullable="true" />
+    <Property Type="String" Name="AltPhone" Nullable="true" />
+    <Property Type="String" Name="Email" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="usp_PeopleUpdate_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="String" Name="Address" Nullable="true" />
+    <Property Type="String" Name="City" Nullable="true" />
+    <Property Type="String" Name="State" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Zip" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="Phone" Nullable="true" />
+    <Property Type="String" Name="AltPhone" Nullable="true" />
+    <Property Type="String" Name="Email" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="usp_ProjectListSelect_Result">
+    <Property Type="String" Name="AddressNumber" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Street1" Nullable="false" />
+    <Property Type="String" Name="APN" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="Date" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="String" Name="PlanCheckNumber" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Notes" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="usp_ProjectsInsert_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="PlanCheckNumber" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="Date" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FinalSignOff" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
+    <Property Type="String" Name="AddressNumber" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="StreetId" Nullable="false" />
+    <Property Type="String" Name="APN" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="ProjectType" Nullable="true" MaxLength="10" />
+    <Property Type="Boolean" Name="PlansReceived" Nullable="false" />
+    <Property Type="Boolean" Name="OnHold" Nullable="false" />
+    <Property Type="String" Name="HoldDescription" Nullable="true" />
+    <Property Type="String" Name="Notes" Nullable="true" />
+    <Property Type="Boolean" Name="Oct2007Related" Nullable="false" />
+    <Property Type="Boolean" Name="SeeFileCabinet" Nullable="false" />
+    <Property Type="Int32" Name="ContactId" Nullable="true" />
+    <Property Type="Int32" Name="LandscapeContactId" Nullable="true" />
+    <Property Type="Int32" Name="PropertyOwnerId" Nullable="false" />
+    <Property Type="Int32" Name="ConstructionType" Nullable="true" />
+    <Property Type="Boolean" Name="Basement" Nullable="false" />
+    <Property Type="Int32" Name="SprinklerContractorId" Nullable="true" />
+    <Property Type="Int32" Name="OriginalSqFt" Nullable="true" />
+    <Property Type="Int32" Name="Stories" Nullable="true" />
+    <Property Type="Int32" Name="SqFtAdded" Nullable="true" />
+    <Property Type="String" Name="FireFlow" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="UFCYear" Nullable="true" />
+    <Property Type="Int32" Name="ParcelId" Nullable="false" />
+    <Property Type="Int32" Name="Street_id" Nullable="false" />
+    <Property Type="Int32" Name="Person_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_ProjectsSelect_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="PlanCheckNumber" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="Date" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FinalSignOff" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
+    <Property Type="String" Name="AddressNumber" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="StreetId" Nullable="false" />
+    <Property Type="String" Name="APN" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="ProjectType" Nullable="true" MaxLength="10" />
+    <Property Type="Boolean" Name="PlansReceived" Nullable="false" />
+    <Property Type="Boolean" Name="OnHold" Nullable="false" />
+    <Property Type="String" Name="HoldDescription" Nullable="true" />
+    <Property Type="String" Name="Notes" Nullable="true" />
+    <Property Type="Boolean" Name="Oct2007Related" Nullable="false" />
+    <Property Type="Boolean" Name="SeeFileCabinet" Nullable="false" />
+    <Property Type="Int32" Name="ContactId" Nullable="true" />
+    <Property Type="Int32" Name="LandscapeContactId" Nullable="true" />
+    <Property Type="Int32" Name="PropertyOwnerId" Nullable="false" />
+    <Property Type="Int32" Name="ConstructionType" Nullable="true" />
+    <Property Type="Boolean" Name="Basement" Nullable="false" />
+    <Property Type="Int32" Name="SprinklerContractorId" Nullable="true" />
+    <Property Type="Int32" Name="OriginalSqFt" Nullable="true" />
+    <Property Type="Int32" Name="Stories" Nullable="true" />
+    <Property Type="Int32" Name="SqFtAdded" Nullable="true" />
+    <Property Type="String" Name="FireFlow" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="UFCYear" Nullable="true" />
+    <Property Type="Int32" Name="ParcelId" Nullable="false" />
+    <Property Type="Int32" Name="Street_id" Nullable="false" />
+    <Property Type="Int32" Name="Person_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_ProjectsUpdate_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="PlanCheckNumber" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="Date" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FinalSignOff" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="Boolean" Name="Active" Nullable="false" />
+    <Property Type="String" Name="AddressNumber" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="StreetId" Nullable="false" />
+    <Property Type="String" Name="APN" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="ProjectType" Nullable="true" MaxLength="10" />
+    <Property Type="Boolean" Name="PlansReceived" Nullable="false" />
+    <Property Type="Boolean" Name="OnHold" Nullable="false" />
+    <Property Type="String" Name="HoldDescription" Nullable="true" />
+    <Property Type="String" Name="Notes" Nullable="true" />
+    <Property Type="Boolean" Name="Oct2007Related" Nullable="false" />
+    <Property Type="Boolean" Name="SeeFileCabinet" Nullable="false" />
+    <Property Type="Int32" Name="ContactId" Nullable="true" />
+    <Property Type="Int32" Name="LandscapeContactId" Nullable="true" />
+    <Property Type="Int32" Name="PropertyOwnerId" Nullable="false" />
+    <Property Type="Int32" Name="ConstructionType" Nullable="true" />
+    <Property Type="Boolean" Name="Basement" Nullable="false" />
+    <Property Type="Int32" Name="SprinklerContractorId" Nullable="true" />
+    <Property Type="Int32" Name="OriginalSqFt" Nullable="true" />
+    <Property Type="Int32" Name="Stories" Nullable="true" />
+    <Property Type="Int32" Name="SqFtAdded" Nullable="true" />
+    <Property Type="String" Name="FireFlow" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="UFCYear" Nullable="true" />
+    <Property Type="Int32" Name="ParcelId" Nullable="false" />
+    <Property Type="Int32" Name="Street_id" Nullable="false" />
+    <Property Type="Int32" Name="Person_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_StreetsInsert_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Street1" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_StreetsSelect_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Street1" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_StreetsUpdate_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Street1" Nullable="false" />
+  </ComplexType>
+</Schema>
