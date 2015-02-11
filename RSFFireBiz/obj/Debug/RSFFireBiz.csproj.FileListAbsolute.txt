@@ -7,6 +7,5 @@ C:\Users\Chuck\Source\RSFFire\RSFFireBiz\bin\Debug\RSFFireData.dll
 C:\Users\Chuck\Source\RSFFire\RSFFireBiz\bin\Debug\RSFFireData.pdb
 C:\Users\Chuck\Source\RSFFire\RSFFireBiz\bin\Debug\EntityFramework.xml
 C:\Users\Chuck\Source\RSFFire\RSFFireBiz\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Chuck\Source\RSFFire\RSFFireBiz\obj\Debug\RSFFireBiz.csprojResolveAssemblyReference.cache
 C:\Users\Chuck\Source\RSFFire\RSFFireBiz\obj\Debug\RSFFireBiz.dll
 C:\Users\Chuck\Source\RSFFire\RSFFireBiz\obj\Debug\RSFFireBiz.pdb

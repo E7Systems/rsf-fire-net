@@ -10,31 +10,17 @@
 namespace RSFFireData.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Project
+    public partial class usp_ProjectsInsert_Result
     {
-        public Project()
-        {
-            this.Documents = new HashSet<Document>();
-            this.Fees = new HashSet<Fee>();
-            this.JournalEntries = new HashSet<JournalEntry>();
-        }
-    
         public int id { get; set; }
-
-        public System.DateTime Created { get; set; }
-        public Nullable<System.DateTime> Updated { get; set; }
-
         public string PlanCheckNumber { get; set; }
         public System.DateTime Date { get; set; }
         public Nullable<System.DateTime> FinalSignOff { get; set; }
         public string Name { get; set; }
         public bool Active { get; set; }
-
-        public string Address { get; set; }
-        public string Street { get; set; }
-
+        public string AddressNumber { get; set; }
+        public int StreetId { get; set; }
         public string APN { get; set; }
         public string ProjectType { get; set; }
         public bool PlansReceived { get; set; }
@@ -55,13 +41,7 @@ namespace RSFFireData.Models
         public string FireFlow { get; set; }
         public Nullable<int> UFCYear { get; set; }
         public int ParcelId { get; set; }
-
-    
-        public virtual ICollection<Document> Documents { get; set; }
-        public virtual ICollection<Fee> Fees { get; set; }
-        public virtual ICollection<JournalEntry> JournalEntries { get; set; }
-        public virtual Parcel Parcel { get; set; }
-        public virtual Person Person { get; set; }
-
+        public int Street_id { get; set; }
+        public int Person_id { get; set; }
     }
 }

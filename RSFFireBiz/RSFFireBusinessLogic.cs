@@ -10,6 +10,7 @@ namespace RSFFireBiz
 {
     public class RsfFireBusinessLogic
     {
+
         public static List<Project> GetProjectListItems(int startRowIndex, 
                         int maximumRows, out int totalRowCount)
         {
@@ -17,6 +18,7 @@ namespace RSFFireBiz
             {
                 totalRowCount = ctx.Projects.Count();
                 return ctx.Projects.ToList();
+
             }
         }
     }

@@ -10,22 +10,15 @@
 namespace RSFFireData.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Ordinance
+    public partial class usp_ProjectListSelect_Result
     {
-        public Ordinance()
-        {
-            this.Fees = new HashSet<Fee>();
-        }
-    
-        public int id { get; set; }
-
-        public System.DateTime Created { get; set; }
-        public Nullable<System.DateTime> Updated { get; set; }
-        public string Number { get; set; }
-        public string Description { get; set; }
-    
-        public virtual ICollection<Fee> Fees { get; set; }
+        public string AddressNumber { get; set; }
+        public string Street1 { get; set; }
+        public string APN { get; set; }
+        public System.DateTime Date { get; set; }
+        public string Name { get; set; }
+        public string PlanCheckNumber { get; set; }
+        public string Notes { get; set; }
     }
 }

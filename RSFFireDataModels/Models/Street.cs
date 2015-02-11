@@ -14,9 +14,11 @@ namespace RSFFireData.Models
     
     public partial class Street
     {
+
         public int id { get; set; }
         public System.DateTime Created { get; set; }
         public Nullable<System.DateTime> Updated { get; set; }
         public string Name { get; set; }
+
     }
 }

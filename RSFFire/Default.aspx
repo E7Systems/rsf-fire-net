@@ -43,35 +43,7 @@
                 <asp:EntityDataSource ID="RSFFireEntities" runat="server">
                 </asp:EntityDataSource>
 
-<%--                <asp:GridView ID="ProjectGridView" runat="server" 
-                    SelectMethod="GetProjects" 
-    CellPadding="4" 
-                    ForeColor="#333333" GridLines="None" AutoGenerateColumns="True">
-                    <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                    <Columns>
-                        <asp:BoundField DataField="AddressNumber" HeaderText="AddressNumber" SortExpression="AddressNumber" />
-                        <asp:BoundField DataField="Street1" HeaderText="Street1" SortExpression="Street1" />
-                        <asp:BoundField DataField="APN" HeaderText="APN" SortExpression="APN" />
-                        <asp:BoundField DataField="Date" HeaderText="Date" SortExpression="Date" />
-                        <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-                        <asp:BoundField DataField="PlanCheckNumber" HeaderText="PlanCheckNumber" SortExpression="PlanCheckNumber" />
-                        <asp:BoundField DataField="Notes" HeaderText="Notes" SortExpression="Notes" />
-                    </Columns>
-                    <EditRowStyle BackColor="#999999" />
-                    <EmptyDataTemplate>
-                        Sorry, no data is available
-                    </EmptyDataTemplate>
-                    <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                    <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                    <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-                    <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                    <SortedAscendingCellStyle BackColor="#E9E7E2" />
-                    <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                    <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                    <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
-                    
-                </asp:GridView>--%>
+
             </div>
             <div role="tabpanel" class="tab-pane" id="parcels">
                 <p>Parcels</p>

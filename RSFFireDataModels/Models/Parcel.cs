@@ -23,6 +23,7 @@ namespace RSFFireData.Models
         public int id { get; set; }
         public System.DateTime Created { get; set; }
         public Nullable<System.DateTime> Updated { get; set; }
+
         public string APN { get; set; }
         public int OwnerId { get; set; }
         public string Address { get; set; }
@@ -33,5 +34,6 @@ namespace RSFFireData.Models
         public virtual ICollection<Document> Documents { get; set; }
         public virtual Person Person { get; set; }
         public virtual ICollection<Project> Projects { get; set; }
+
     }
 }

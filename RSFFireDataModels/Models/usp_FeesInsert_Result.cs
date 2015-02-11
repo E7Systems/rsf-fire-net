@@ -10,19 +10,14 @@
 namespace RSFFireData.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Fee
+    public partial class usp_FeesInsert_Result
     {
         public int id { get; set; }
-
-        public System.DateTime Created { get; set; }
-        public Nullable<System.DateTime> Updated { get; set; }
         public string Description { get; set; }
         public int OrdinanceId { get; set; }
         public int ProjectId { get; set; }
-        public decimal FeeAmt { get; set; }
-
+        public decimal Fee1 { get; set; }
         public int Qty { get; set; }
         public decimal AmtPaid { get; set; }
         public string PaidWith { get; set; }
@@ -36,9 +31,8 @@ namespace RSFFireData.Models
         public Nullable<System.DateTime> PickedUpOn { get; set; }
         public string PickedUpBy { get; set; }
         public string Notes { get; set; }
-        
-        public virtual Ordinance Ordinance { get; set; }
-        public virtual Person Person { get; set; }
-        public virtual Project Project { get; set; }
+        public int Project_id { get; set; }
+        public int Person_id { get; set; }
+        public int Ordinance_id { get; set; }
     }
 }
