@@ -8,7 +8,10 @@ To build the code, you will need:
  * SQL Server 2012
  * Entity Framwwork 6.1
 
+Start by connecting to your instance of SQL Server 2012 and run the SQL script in the RSFFireData project.
 
- -Chuck Hedrick
+Next you will need to change the databse connection strings in the RSFireData project's App.config file.
+ 
+-Chuck Hedrick
 
 

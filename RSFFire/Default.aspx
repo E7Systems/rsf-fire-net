@@ -21,6 +21,7 @@
         <!-- Tab panes -->
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="projects">
+               <hr/>
                 <asp:GridView ID="GridView1" runat="server"
                     ItemType="RSFFireData.Models.Project"
                     SelectMethod="GetProjects" AllowPaging="True" 
